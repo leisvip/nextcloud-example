@@ -38,7 +38,7 @@ services:
     volumes:
       - nextcloud:/var/www/html:ro
     environment:
-      - VIRTUAL_HOST=121.40.95.122
+      - VIRTUAL_HOST=your.domain.name
       # - LETSENCRYPT_HOST=
       # - LETSENCRYPT_EMAIL=
     depends_on:
@@ -94,11 +94,11 @@ services:
     volumes:
       - certs:/certs
     environment:
-      - SSL_SUBJECT=121.40.95.122
+      - SSL_SUBJECT=your.domain.name
       - CA_SUBJECT=nextcloud@demo.com
-      - SSL_KEY=/certs/121.40.95.122.key
-      - SSL_CSR=/certs/121.40.95.122.csr
-      - SSL_CERT=/certs/121.40.95.122.crt
+      - SSL_KEY=/certs/your.domain.name.key
+      - SSL_CSR=/certs/your.domain.name.csr
+      - SSL_CERT=/certs/your.domain.name.crt
     networks:
       - proxy-tier
 
