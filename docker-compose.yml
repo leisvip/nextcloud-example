@@ -17,13 +17,15 @@ services:
     restart: always
 
   app:
-    build: ./nextcloud
+    image: nextcloud:fpm-alpine
+    # build: ./nextcloud
     restart: always
     volumes:
       - nextcloud:/var/www/html
     environment:
       - MYSQL_HOST=db
       - REDIS_HOST=redis
+      - OVERWRITEPROTOCOL=https
     env_file:
       - db.env
     depends_on:
