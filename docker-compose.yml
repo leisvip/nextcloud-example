@@ -23,6 +23,7 @@ services:
       - nextcloud:/var/www/html
     environment:
       - VIRTUAL_HOST=121.40.95.122
+      - NEXTCLOUD_HOSTNAME=121.40.95.122
       # - LETSENCRYPT_HOST=
       # - LETSENCRYPT_EMAIL=
       - MYSQL_HOST=db
