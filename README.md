@@ -97,3 +97,8 @@ NextCloud的其中一个核心亮点是，可以从应用商店安装新的应�
 
 但是由于NextCloud的应用商店服务器在国外，从国内的ECS链接过去经常会超时。因此如果遇到应用安装失败的话需要重试几次。
 
+### 使用客户端
+
+如果希望在手机或平板上使用，可以在Google Play或者苹果App Store下载NextCloud的客户端。
+对于国内无法使用Google Play的用户，可以直接到[NextCloud的Github](https://github.com/nextcloud/android/releases)下载apk安装包。
+
