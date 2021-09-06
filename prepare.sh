@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set ip/domain of app
+# set ip of app server
 if [ "$#" -eq  "0" ]
   then
     echo "No arguments supplied. App domain name is not set."
@@ -9,7 +9,7 @@ else
     sed -i -e "s/your.domain.name/$1/g" ./docker-compose.yml
 fi
 
-# config docker registry mirrors
+# config docker registry mirrors to make pulling faster
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
