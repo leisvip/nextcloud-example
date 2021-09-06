@@ -18,7 +18,6 @@ services:
 
   app:
     image: nextcloud:fpm-alpine
-    # build: ./nextcloud
     restart: always
     volumes:
       - nextcloud:/var/www/html
@@ -87,7 +86,7 @@ services:
   #   depends_on:
   #     - proxy
 
-# self signed
+  # self signed
   omgwtfssl:
     image: paulczar/omgwtfssl
     restart: "no"
