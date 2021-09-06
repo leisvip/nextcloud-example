@@ -84,10 +84,12 @@ docker-compose up -d
 
 NextCloud的其中一个核心亮点是，可以从应用商店安装新的应用到你的NextCloud服务中。你可以依次点击`右上角 - 应用`来管理你的应用。
 
+下面推荐几款我正在使用的应用：
+
 - Draw.io 大名鼎鼎的画图神器，各种UML图、线框图都可以画！在线画图，点击保存，随处访问！
-- Markdown Editor 可以直接在线编辑Markdown文件。
 - Mind Map 专门用来画思维导图的神器。
-- Notes 笔记本功能。安装以后顶栏会出现一个笔记按钮。
+- Markdown Editor 让你可以直接在线编辑Markdown文件。
+- Notes 笔记本功能。安装以后顶栏会出现一个笔记按钮，管理笔记更加方便。
 
 还有更多优质应用等你探索！
 
