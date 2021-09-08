@@ -12,8 +12,9 @@
 
 在[阿里云](https://ecs.console.aliyun.com/)购买一台 ECS 云服务器。
 
-- 注意操作系统要选择 Ubuntu 20.04 的。否则本教程中的命令可能不适用。
 - 由于本教程是个人云盘场景，因此推荐`实例规格`选择`突发性能实例`系列的。因为云盘场景不需要时刻都满负载计算，仅仅在你使用云盘时需要跑满负载。因此，选择`突发性能实例`系列的性价比更高（相同配置价格更低）。
+- 操作系统要选择 Ubuntu 20.04 的。否则本教程中的命令可能不适用。
+- 在配置网络和安全组的时候，要勾选开放端口 80 和 443。否则云盘服务无法被访问到。如果你选择的是已有的安全组，确保它开放了端口 80 和 443。
 
 ### 登录云服务器
 
@@ -48,24 +49,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 > 详情参考[Docker —— 从入门到实践](https://yeasy.gitbook.io/docker_practice/compose/install)
-
-### 配置 docker 镜像加速
-
-等一下我们需要通过 docker 拉取镜像。但是由于网络原因，从默认的国外服务器拉取镜像会非常慢。因此我们先配置 docker 使用阿里云的镜像加速器。
-
-用浏览器访问[阿里云容器镜像服务控制台 - 镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)。其中的操作文档提供了可执行的脚本代码，你在云服务器中执行它即可。执行的代码类似于这样：
-
-```sh
-sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "registry-mirrors": [你的私人镜像加速器地址]
-}
-EOF
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-
-```
 
 ### 安装 git
 
