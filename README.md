@@ -4,7 +4,13 @@
 
 无须代码基础，有手就能做！
 
-基于[NextCloud 官方示例](https://github.com/nextcloud/docker/tree/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache)。
+自己部署 NextCloud 的优点：
+
+- 开放灵活。NextCloud 是一套开源的私人云盘系统，本身功能非常成熟可靠。而且支持插件定制，应用商店中有很多好用的插件可以使用。
+- 高效工作。你可以在线查看、编辑 PDF、文本文件，甚至在线流程图、思维导图！它不仅仅是一个云盘，而且是一个高效的个人工作台。
+- 便于访问。支持通过 PC 端、移动端、浏览器来使用。跨端同步你的文件，随时随地都能访问你的数据。你还可以将你的文件分享给朋友或同事。
+- 自主可控。代码就部署在你自己的服务器上，你甚至可以将它部署在封闭的内网环境中（比如公司内网）。再也不用担心云盘数据安全，也不用担心云盘厂商哪天跑路了。
+- 多人协作。支持任意多个用户，每个人拥有独立的云盘空间。多个用户之间可以共享文件夹，并协同编辑文档。适合家庭和小型企业使用。
 
 ## 部署步骤
 
@@ -21,6 +27,8 @@
 通过[阿里云 ECS 控制台](https://ecs.console.aliyun.com/)，远程连接到云服务器。以下操作皆在云服务器中完成。
 
 ### 安装并启用 docker
+
+docker 是一款开源的容器运行工具，提供了一套便捷的服务打包、分发、部署方式。我们将要部署的 NextCloud 以及相关的数据库等服务就是通过 docker 容器来运行的。
 
 依次执行以下命令，通过自动化脚本完成 docker 安装：
 
@@ -41,6 +49,8 @@ sudo systemctl start docker
 > 详情参考[Docker —— 从入门到实践](https://yeasy.gitbook.io/docker_practice/install/ubuntu)
 
 ### 安装 docker-compose
+
+docker-compose 是一款基于 docker 的容器编排工具。有了它，我们通过一份配置文件就能启动所有需要的服务。因此我们先来安装它：
 
 ```sh
 sudo curl -L https://download.fastgit.org/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -76,7 +86,9 @@ chmod +x ./prepare.sh
 ./prepare.sh 你的服务器公网IP
 ```
 
-启动所有 docker 容器：
+> 注意将上面命令的【你的服务器公网 IP】替换成你的云服务器 IP。
+
+然后，就可以启动所有 docker 容器了：
 
 ```sh
 docker-compose up -d
@@ -84,7 +96,7 @@ docker-compose up -d
 
 > 初次执行此命令时，会花费一些时间来拉取 docker 镜像。
 
-完成！等待大约 2 分钟，所有容器初始化完毕以后，你的私人云盘服务就可以访问了！
+大功告成！等待大约 5 分钟，所有容器初始化完毕以后，你的私人云盘服务就可以访问了！
 
 ## 使用 NextCloud
 
@@ -123,3 +135,7 @@ NextCloud 的其中一个核心亮点是，可以从应用商店安装新的应�
 
 如果希望在手机或平板上使用，可以在 Google Play 或者苹果 App Store 下载 NextCloud 的客户端。
 对于国内无法使用 Google Play 的用户，可以直接到[NextCloud 的 Github](https://github.com/nextcloud/android/releases)下载 apk 安装包。
+
+## 参考资料
+
+- [NextCloud 官方示例](https://github.com/nextcloud/docker/tree/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache)。
