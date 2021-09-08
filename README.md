@@ -42,6 +42,30 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 > 详情参考[Docker —— 从入门到实践](https://yeasy.gitbook.io/docker_practice/compose/install)
 
+### 配置docker镜像加速
+
+等一下我们需要通过docker拉取镜像。但是由于网络原因，从默认的国外服务器拉取镜像会非常慢。因此我们先配置docker使用阿里云的镜像加速器。
+
+用浏览器访问[阿里云容器镜像服务控制台 - 镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)。其中的操作文档提供了可执行的脚本代码，你在云服务器中执行它即可。执行的代码类似于这样：
+```sh
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": [你的私人镜像加速器地址]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+```
+
+### 安装git
+
+我们将使用git来拉取模板项目，因此请先安装git：
+```sh
+sudo apt install git
+```
+
 ### 准备NextCloud部署配置
 
 克隆我们提前配置好的部署环境：
@@ -77,6 +101,7 @@ docker-compose up -d
 
 完成上述步骤以后，你就真正看到了你的NextCloud服务！初次使用时，它会引导你注册一个管理员账号。然后你就可以尽情探索了！
 > 注册管理员账号时，不要勾选“install apps”，原因参考下面的注意事项。你可以登录成功以后再到应用商店下载。
+> 初次注册管理账号时，会比较慢，可能会造成网页请求超时。没关系，注册管理账号的过程依然在背后默默进行。刷新页面以后你依然使用刚才注册的管理账号来登录即可。可能需要刷新页面重试几次。
 
 建议你先将应用语言修改成中文：`右上角 - Settings - Language - 简体中文`。
 
